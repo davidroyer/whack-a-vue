@@ -1,0 +1,3 @@
+button {
+  @apply px-8 py-1 rounded-md shadow-sm;
+}

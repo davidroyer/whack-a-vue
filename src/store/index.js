@@ -4,8 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    playing: false
+  },
+  mutations: {
+    setPlaying(state, payload) {
+      state.playing = payload;
+    }
+  },
   actions: {},
   modules: {}
 });

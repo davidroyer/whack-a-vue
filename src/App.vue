@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app" class="h-screen px-3 py-6 bg-pink-50">
+    <Start v-if="!playing" />
+    <Game v-else />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Start from "@/views/Start.vue";
+import Game from "@/views/Game.vue";
 export default {
   name: "App",
-  components: {
-    HelloWorld
+  components: { Start, Game },
+
+  computed: {
+    playing() {
+      return this.$store.state.playing;
+    }
   }
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="postcss">
+button {
+  @apply text-white font-play font-bold text-4xl;
 }
 </style>
