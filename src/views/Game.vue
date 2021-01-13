@@ -48,6 +48,8 @@ const molesArray = nineItemArray.map((item, index) => {
 
 // TODO: Fix being able to wrack a div after the clock is showing 0 seconds
 
+// TODO: Try using v-if to check if gameClock is above 0 and then allow click
+
 export default {
   components: { GameInfo },
 
