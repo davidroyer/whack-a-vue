@@ -13,11 +13,12 @@
         <transition name="scale" mode="out-in">
           <div
             v-if="mole.active"
+            :ref="`mole-${mole.id}`"
             :key="gameScore"
             class="flex items-center justify-center w-1/3 bg-gray-100 rounded-full shadow-2xl cursor-pointer mole h-2/3"
-            @click="handleMoleClicked(mole)"
+            @click.prevent="handleMoleClicked(mole)"
           >
-            {{ mole.id }}
+            <img src="@/assets/images/logo.png" alt="" />
           </div>
         </transition>
       </div>
@@ -61,7 +62,14 @@ export default {
     gameScore: 0
   }),
 
-  mounted() {
+  computed: {
+    timeIsUp() {
+      return this.gameClock === 0;
+    }
+  },
+
+  async mounted() {
+    await delay(900);
     this.runGame();
     // this.showNewMole();
   },
@@ -78,6 +86,12 @@ export default {
     },
 
     handleMoleClicked({ id }) {
+      // NOTE: Prevents any issue with dblclicks
+      const clickedEl = this.$refs[`mole-${id}`][0];
+      clickedEl.style.pointerEvents = "none";
+
+      if (this.timeIsUp) return;
+
       ++this.gameScore;
       this.hideClickedMole(id);
       this.showNewMole();
@@ -86,7 +100,7 @@ export default {
     runGame() {
       this.showNewMole();
       this.timerInterval = setInterval(() => {
-        if (this.gameClock === 0) {
+        if (this.timeIsUp) {
           this.endGame();
           clearInterval(this.timerInterval);
         } else --this.gameClock;

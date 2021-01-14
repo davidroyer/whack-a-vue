@@ -1,4 +1,4 @@
-# vue-tailwind-template
+# Whack-A-Vue
 
 ## Project setup
 
