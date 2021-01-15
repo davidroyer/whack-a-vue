@@ -10,7 +10,7 @@
       </span>
     </div>
     <div
-      class="w-56 pt-2 pb-4 font-black text-center text-pink-600 bg-black shadow-md  game-clock rounded-b-xl text-8xl"
+      class="w-56 pt-2 pb-4 font-black text-center text-pink-600 bg-black shadow-md game-clock rounded-b-xl text-8xl"
     >
       <div>{{ clock }}</div>
     </div>
@@ -21,11 +21,6 @@
 export default {
   props: {
     clock: {
-      type: Number,
-      required: true
-    },
-
-    score: {
       type: Number,
       required: true
     }

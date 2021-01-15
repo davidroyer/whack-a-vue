@@ -1,75 +1,62 @@
 <template>
   <div class="game">
-    <game-info :score="gameScore" :clock="gameClock" />
+    <game-info :clock="gameClock" />
 
     <div
       class="grid w-full grid-flow-col grid-cols-3 grid-rows-3 gap-6 game-grid"
     >
-      <div
-        v-for="(mole, index) in moles"
+      <game-hole
+        v-for="(item, index) in moles"
         :key="index"
-        class="flex items-center justify-center h-40 p-2 bg-indigo-900 rounded-md shadow-xl game-grid-item"
-      >
-        <transition name="scale" mode="out-in">
-          <div
-            v-if="mole.active"
-            :ref="`mole-${mole.id}`"
-            :key="gameScore"
-            class="flex items-center justify-center w-1/3 bg-gray-100 rounded-full shadow-2xl cursor-pointer mole h-2/3"
-            @click.prevent="handleMoleClicked(mole)"
-          >
-            <img src="@/assets/images/logo.png" alt="" />
-          </div>
-        </transition>
-      </div>
+        :hole="item"
+        @whacked-item="handleMoleClicked"
+      />
     </div>
+
     <transition name="scale">
       <div
         v-if="showGameOverlay"
         class="flex flex-col items-center justify-center game-overlay"
       >
-        <h2 class="mb-6 text-7xl">Game Over!</h2>
-        <button class="bg-pink-700" @click="playAgain">Play Again</button>
+        <h2 class="font-black mb-1/12 text-7xl">Game Over!</h2>
+        <h3
+          class="mb-1 text-5xl font-extrabold"
+          v-text="`Your Score: ${gameScore}`"
+        />
+        <button class="bg-pink-700" @click="playAgain">
+          Play Again
+        </button>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
-import { delay } from "@/utils";
+import { delay, molesArray } from "@/utils";
 import GameInfo from "@/components/GameInfo";
-
-const nineItemArray = Array.from(Array(9).keys());
-const molesArray = nineItemArray.map((item, index) => {
-  return {
-    active: false,
-    id: index + 1
-  };
-});
-
-// TODO: Fix being able to wrack a div after the clock is showing 0 seconds
-
-// TODO: Try using v-if to check if gameClock is above 0 and then allow click
+import GameHole from "../components/GameHole.vue";
 
 export default {
-  components: { GameInfo },
+  components: { GameInfo, GameHole },
 
   data: () => ({
     showGameOverlay: false,
     moles: molesArray,
     gameClock: 10,
-    timerInterval: null,
-    gameScore: 0
+    timerInterval: null
   }),
 
   computed: {
     timeIsUp() {
       return this.gameClock === 0;
+    },
+
+    gameScore() {
+      return this.$store.state.gameScore;
     }
   },
 
-  async mounted() {
-    await delay(900);
+  mounted() {
     this.runGame();
     // this.showNewMole();
   },
@@ -86,19 +73,19 @@ export default {
     },
 
     handleMoleClicked({ id }) {
-      // NOTE: Prevents any issue with dblclicks
-      const clickedEl = this.$refs[`mole-${id}`][0];
-      clickedEl.style.pointerEvents = "none";
+      console.log("🚀 ~ file: Game.vue ~ line 81 ~ handleMoleClicked ~ id", id);
 
       if (this.timeIsUp) return;
 
-      ++this.gameScore;
+      this.$store.commit("increaseScore", 1);
       this.hideClickedMole(id);
       this.showNewMole();
     },
 
-    runGame() {
+    async runGame() {
+      await delay(900);
       this.showNewMole();
+
       this.timerInterval = setInterval(() => {
         if (this.timeIsUp) {
           this.endGame();
@@ -108,24 +95,20 @@ export default {
     },
 
     resetGame() {
-      this.gameScore = 0;
+      this.$store.commit("resetScore");
       this.gameClock = 10;
     },
 
     endGame() {
       const activeMoleIndex = this.moles.findIndex(mole => mole.active);
-      console.log(
-        "🚀 ~ file: Game.vue ~ line 99 ~ endGame ~ activeMoleIndex",
-        activeMoleIndex
-      );
+
       this.moles[activeMoleIndex].active = false;
       this.showGameOverlay = true;
     },
 
-    async playAgain() {
+    playAgain() {
       this.showGameOverlay = false;
       this.resetGame();
-      await delay(900);
       this.runGame();
     }
   }
