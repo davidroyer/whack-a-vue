@@ -7,7 +7,7 @@
         v-if="hole.active"
         :ref="`hole-${hole.id}`"
         :key="$store.state.gameScore"
-        class="flex items-center justify-center w-1/3 bg-gray-100 rounded-full shadow-2xl mole h-2/3"
+        class="flex items-center justify-center w-1/3 bg-gray-100 rounded-full shadow-2xl cursor-pointer mole h-2/3"
         @click.prevent="handleItemClicked(hole)"
       >
         <img src="@/assets/images/logo.png" alt="Vue Logo" />
@@ -37,10 +37,4 @@ export default {
 };
 </script>
 
-<style>
-.mole {
-  @apply cursor-pointer;
-  cursor: url("/img/mallet.png") auto;
-  /* cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/sad.png"), auto; */
-}
-</style>
+<style></style>

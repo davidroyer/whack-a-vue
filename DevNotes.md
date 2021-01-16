@@ -1,5 +1,7 @@
 # DevNotes
 
+- <https://medium.com/javascript-in-plain-english/common-vue-problems-background-image-in-style-tag-plugins-previous-routes-d313d6e8fbdf>
+
 ## Using `key` to handle mole reappearing in same hole
 
 An interested case of logic that I had never encountered is how I'm using the

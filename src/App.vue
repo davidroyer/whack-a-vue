@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="h-screen px-3 py-6 bg-pink-50">
+  <div id="app" class="h-screen bg-pink-50">
     <Start v-if="!playing" />
     <Game v-else />
   </div>

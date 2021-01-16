@@ -1,5 +1,5 @@
 <template>
-  <div class="game">
+  <div class="game" :class="{ 'overlay-active': showGameOverlay }">
     <game-info :clock="gameClock" />
 
     <div
@@ -58,7 +58,6 @@ export default {
 
   mounted() {
     this.runGame();
-    // this.showNewMole();
   },
 
   methods: {
@@ -73,8 +72,6 @@ export default {
     },
 
     handleMoleClicked({ id }) {
-      console.log("🚀 ~ file: Game.vue ~ line 81 ~ handleMoleClicked ~ id", id);
-
       if (this.timeIsUp) return;
 
       this.$store.commit("increaseScore", 1);
@@ -117,7 +114,11 @@ export default {
 
 <style lang="postcss">
 .game {
-  @apply flex flex-wrap items-center justify-center h-full max-w-5xl mx-auto;
+  @apply flex flex-wrap items-center justify-center h-full max-w-5xl mx-auto px-3 py-6;
+
+  &:not(.overlay-active) {
+    /* cursor: url("~@/assets/images/mallet.png"), auto; */
+  }
 
   .mole {
     min-width: 100px;

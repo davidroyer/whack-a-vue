@@ -8,6 +8,7 @@ export default new Vuex.Store({
     playing: false,
     gameScore: 0
   },
+
   mutations: {
     setPlaying(state, payload) {
       state.playing = payload;
