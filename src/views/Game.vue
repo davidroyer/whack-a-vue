@@ -1,5 +1,5 @@
 <template>
-  <div class="game" :class="{ 'overlay-active': showGameOverlay }">
+  <div class="relative game" :class="{ 'overlay-active': showGameOverlay }">
     <game-info :clock="gameClock" />
 
     <div
@@ -13,17 +13,21 @@
       />
     </div>
 
+    <div
+      v-if="showCountdown"
+      class="absolute flex items-center justify-center w-48 h-48 font-extrabold text-white bg-pink-700 border-2 border-white rounded-full countdown text-9xl"
+    >
+      {{ countdownValue }}
+    </div>
+
     <transition name="scale">
-      <div
-        v-if="showGameOverlay"
-        class="flex flex-col items-center justify-center game-overlay"
-      >
-        <h2 class="font-black mb-1/12 text-7xl">Game Over!</h2>
+      <div v-if="showGameOverlay" class="game-overlay">
+        <h2 class="text-5xl font-black sm:text-7xl">Game Over!</h2>
         <h3
-          class="mb-1 text-5xl font-extrabold"
+          class="-mt-3 text-3xl font-extrabold mb-1/12 sm:mt-0 sm:text-5xl"
           v-text="`Your Score: ${gameScore}`"
         />
-        <button class="bg-pink-700" @click="playAgain">
+        <button class="bg-pink-600 hover:bg-pink-800" @click="playAgain">
           Play Again
         </button>
       </div>
@@ -32,9 +36,10 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
 import { delay, molesArray } from "@/utils";
 import GameInfo from "@/components/GameInfo";
-import GameHole from "../components/GameHole.vue";
+import GameHole from "@/components/GameHole";
 
 export default {
   components: { GameInfo, GameHole },
@@ -43,7 +48,8 @@ export default {
     showGameOverlay: false,
     moles: molesArray,
     gameClock: 10,
-    timerInterval: null
+    timerInterval: null,
+    countdownValue: 0
   }),
 
   computed: {
@@ -53,11 +59,16 @@ export default {
 
     gameScore() {
       return this.$store.state.gameScore;
+    },
+
+    showCountdown() {
+      return this.countdownValue > 0;
     }
   },
 
   mounted() {
-    this.runGame();
+    this.runCountdown();
+    // this.runGame();
   },
 
   methods: {
@@ -80,7 +91,6 @@ export default {
     },
 
     async runGame() {
-      await delay(900);
       this.showNewMole();
 
       this.timerInterval = setInterval(() => {
@@ -96,6 +106,8 @@ export default {
       this.gameClock = 10;
     },
 
+    startGame() {},
+
     endGame() {
       const activeMoleIndex = this.moles.findIndex(mole => mole.active);
 
@@ -106,7 +118,21 @@ export default {
     playAgain() {
       this.showGameOverlay = false;
       this.resetGame();
-      this.runGame();
+      this.runCountdown();
+    },
+
+    async runCountdown() {
+      await delay(600);
+
+      this.countdownValue = 3;
+      let countdownInterval = setInterval(() => {
+        if (this.countdownValue === 0) {
+          clearInterval(countdownInterval);
+          this.runGame();
+        } else {
+          --this.countdownValue;
+        }
+      }, 1000);
     }
   }
 };
@@ -125,15 +151,16 @@ export default {
   }
 
   &-overlay {
-    @apply bg-indigo-900 top-0 bottom-0 right-0 left-0 fixed bg-opacity-75 text-white;
+    @apply bg-indigo-900 top-0 bottom-0 right-0 left-0 fixed bg-opacity-75 text-white flex flex-col items-center justify-center;
+    backdrop-filter: blur(6px);
   }
 }
 
 .scale-enter-active {
-  animation: scale-in 0.45s;
+  animation: scale-in 0.35s;
 }
 .scale-leave-active {
-  animation: scale-in 0.4s reverse;
+  animation: scale-in 0.3s reverse;
 }
 @keyframes scale-in {
   0% {

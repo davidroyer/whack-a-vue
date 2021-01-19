@@ -20,8 +20,4 @@ export default {
 };
 </script>
 
-<style lang="postcss">
-button {
-  @apply text-white font-play font-bold text-4xl;
-}
-</style>
+<style lang="postcss"></style>
