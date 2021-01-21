@@ -1,5 +1,12 @@
 [
   {
+    "name": "Game",
+    "path": "/Game",
+    "component": "/Users/davidroyer/Repos/whack-a-vue/pages/Game.vue",
+    "chunkName": "pages/Game",
+    "_name": "_b6950fb2"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/davidroyer/Repos/whack-a-vue/pages/index.vue",

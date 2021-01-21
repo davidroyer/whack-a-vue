@@ -1,4 +1,16 @@
 {
+  "GameHole": {
+    "description": "Auto imported from /components/GameHole.vue"
+  },
+  "LazyGameHole": {
+    "description": "Auto imported from /components/GameHole.vue"
+  },
+  "GameInfo": {
+    "description": "Auto imported from /components/GameInfo.vue"
+  },
+  "LazyGameInfo": {
+    "description": "Auto imported from /components/GameInfo.vue"
+  },
   "Logo": {
     "description": "Auto imported from /components/Logo.vue"
   },
