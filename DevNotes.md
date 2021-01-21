@@ -9,3 +9,16 @@ An interested case of logic that I had never encountered is how I'm using the
 re-run it's transition to reappear in the same hole.
 
 ## Tailwind
+
+## Nuxt/Dev Process
+
+I was able to fix the `eslintcache` issue by adding the following to
+`nuxt.config.js`:
+
+```js
+export default {
+  eslint: {
+    cache: false
+  }
+}
+```

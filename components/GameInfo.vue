@@ -6,7 +6,7 @@
       class="flex justify-center w-56 h-full px-2 py-1 text-3xl text-white bg-pink-600 rounded-t-lg shadow-md font-play game-score"
     >
       <span>
-         <strong>Game Clock</strong>
+        <strong>Game Clock</strong>
       </span>
     </div>
     <div

@@ -3,9 +3,14 @@
     <h1 class="mb-2 text-5xl font-bold font-play sm:mb-4 sm:text-7xl md:mb-6">
       Whack-A-Vue
     </h1>
-    <button class="bg-indigo-600 hover:bg-indigo-800" @click="startGame">
+    <nuxt-link
+      tag="button"
+      to="/game"
+      class="bg-indigo-600 hover:bg-indigo-800"
+      @click="startGame"
+    >
       Start
-    </button>
+    </nuxt-link>
   </div>
 </template>
 

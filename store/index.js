@@ -1,6 +1,7 @@
 export const state = () => ({
   playing: false,
-  gameScore: 0
+  gameScore: 0,
+  isDev: null
 })
 
 export const mutations = {
@@ -14,5 +15,9 @@ export const mutations = {
 
   resetScore(state) {
     state.gameScore = 0
+  },
+
+  setIsDev(state, payload) {
+    state.isDev = payload
   }
 }

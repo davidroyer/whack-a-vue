@@ -2,6 +2,7 @@
   <div class="relative game" :class="{ 'overlay-active': showGameOverlay }">
     <game-info :clock="gameClock" />
 
+    <div></div>
     <div
       class="grid w-full grid-flow-col grid-cols-3 grid-rows-3 gap-6 game-grid"
     >
@@ -90,7 +91,7 @@ export default {
       this.showNewMole()
     },
 
-     runGame () {
+    runGame() {
       this.showNewMole()
 
       this.timerInterval = setInterval(() => {

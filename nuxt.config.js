@@ -1,14 +1,40 @@
+const SiteUrl =
+  process.env.NODE_ENV === 'production'
+    ? 'https://whackavue.netlify.app'
+    : 'http://localhost:3000'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-tailwind-template',
+    title: 'Whack-A-Vue - Vue.js project by David Royer',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'description here'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: `${SiteUrl}/Share2.png`
+      },
+      { hid: 'twitter:title', name: 'twitter:title', content: 'title here' },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: 'description here'
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: `${SiteUrl}/Share2.png`
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
