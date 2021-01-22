@@ -1,6 +1,6 @@
 {
-  "name": "nuxt-tailwind-template",
-  "version": "1.0.0",
+  "name": "whack-a-vue",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "nuxt",

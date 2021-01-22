@@ -3,32 +3,35 @@ const SiteUrl =
     ? 'https://nuxt--whackavue.netlify.app'
     : 'http://localhost:3000'
 
+const title = 'Whack-A-Vue - Vue.js project by David Royer'
+const description = 'A game based on the arcade game Whack-A-Mole'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Whack-A-Vue - Vue.js project by David Royer',
+    title,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: description },
       {
         hid: 'og:description',
         property: 'og:description',
-        content: 'description here'
+        content: description
       },
       {
         hid: 'og:image',
         property: 'og:image',
         content: `${SiteUrl}/Share2.png`
       },
-      { hid: 'twitter:title', name: 'twitter:title', content: 'title here' },
+      { hid: 'twitter:title', name: 'twitter:title', content: title },
       {
         hid: 'twitter:description',
         name: 'twitter:description',
-        content: 'description here'
+        content: description
       },
       {
         hid: 'twitter:image',
