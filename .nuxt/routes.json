@@ -3,14 +3,12 @@
     "name": "Game",
     "path": "/Game",
     "component": "/Users/davidroyer/Repos/whack-a-vue/pages/Game.vue",
-    "chunkName": "pages/Game",
-    "_name": "_b6950fb2"
+    "chunkName": "pages/Game"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/davidroyer/Repos/whack-a-vue/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_1159938d"
+    "chunkName": "pages/index"
   }
 ]
