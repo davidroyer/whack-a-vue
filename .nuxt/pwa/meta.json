@@ -1,5 +1,5 @@
 {
-  "title": "nuxt-tailwind-template",
+  "title": "whack-a-vue",
   "meta": [
     {
       "hid": "charset",
@@ -18,7 +18,7 @@
     {
       "hid": "apple-mobile-web-app-title",
       "name": "apple-mobile-web-app-title",
-      "content": "nuxt-tailwind-template"
+      "content": "whack-a-vue"
     },
     {
       "hid": "description",
@@ -35,13 +35,13 @@
       "hid": "og:title",
       "name": "og:title",
       "property": "og:title",
-      "content": "nuxt-tailwind-template"
+      "content": "whack-a-vue"
     },
     {
       "hid": "og:site_name",
       "name": "og:site_name",
       "property": "og:site_name",
-      "content": "nuxt-tailwind-template"
+      "content": "whack-a-vue"
     },
     {
       "hid": "og:description",
@@ -62,7 +62,7 @@
     },
     {
       "rel": "manifest",
-      "href": "/_nuxt/manifest.4e3c0502.json",
+      "href": "/_nuxt/manifest.c9776393.json",
       "hid": "manifest"
     }
   ],
