@@ -7,7 +7,7 @@
 ## Project Overview
 
 This project is just for learning, fun, and honing my skills.
-It uses Vue.js and TailwindCSS.
+It uses Nuxt.js, a Vue.js framework, and TailwindCSS.
 
 It's based off the arcade game called **Whack-A-Mole**.
 I thought it would be interesting to try to build a game-like experience using

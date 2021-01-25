@@ -1,8 +1,12 @@
 <template>
   <div class="flex flex-col flex-wrap items-center justify-center h-full">
-    <h1 class="mb-2 text-5xl font-bold font-play sm:mb-4 sm:text-7xl md:mb-6">
-      Whack-A-Vue
-    </h1>
+    <AppHeader />
+
+    <h1 class="mb-2 text-5xl font-bold font-play sm:text-7xl">Whack-A-Vue</h1>
+    <p class="-mt-1.5 mb-6 text-center text-xl">
+      You have 10 seconds to whack (click on) as many Vue logos as you can.
+    </p>
+
     <nuxt-link
       tag="button"
       to="/game"
@@ -26,5 +30,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss"></style>

@@ -3,7 +3,7 @@ const SiteUrl =
     ? 'https://nuxt--whackavue.netlify.app'
     : 'http://localhost:3000'
 
-const title = 'Whack-A-Vue - Vue.js project by David Royer'
+const title = 'Whack-A-Vue - Nuxt.js project by David Royer'
 const description = 'A game based on the arcade game Whack-A-Mole'
 
 export default {
@@ -76,6 +76,9 @@ export default {
 
   eslint: {
     cache: false
+  },
+  tailwindcss: {
+    cssPath: '@/assets/styles/index.css'
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

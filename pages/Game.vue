@@ -37,7 +37,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
 import { delay, molesArray } from '@/utils'
 import GameInfo from '@/components/GameInfo'
 import GameHole from '@/components/GameHole'
@@ -69,7 +68,6 @@ export default {
 
   mounted() {
     this.runCountdown()
-    // this.runGame();
   },
 
   methods: {
