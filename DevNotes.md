@@ -10,6 +10,9 @@ re-run it's transition to reappear in the same hole.
 
 ## Tailwind
 
+- Make sure to set `cssPath` option if using Nuxt's module and the path differs
+  from the modules default path.
+
 ## Nuxt/Dev Process
 
 I was able to fix the `eslintcache` issue by adding the following to
@@ -22,3 +25,9 @@ export default {
   }
 }
 ```
+
+## Nuxt PWA
+
+Create my app icon in `static` with the filename of `icon.png`.
+
+Should be transparent and minimum of 512x512.
